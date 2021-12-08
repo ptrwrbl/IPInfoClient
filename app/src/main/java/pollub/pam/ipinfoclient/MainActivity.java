@@ -21,7 +21,66 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    private String prepareAPIData() {
+
+    public void sendButtonPressed(View view) {
+        if(validateRequestData()) {
+            handleAPIRequest();
+        }
+    }
+
+    private boolean validateRequestData() {
+        EditText firstOctet = (EditText) findViewById(R.id.IP_firstOctet);
+        EditText secondOctet = (EditText) findViewById(R.id.IP_secondOctet);
+        EditText thirdOctet = (EditText) findViewById(R.id.IP_thirdOctet);
+        EditText forthOctet = (EditText) findViewById(R.id.IP_forthOctet);
+
+        /* Checking if octets are empty */
+        if (firstOctet.length() == 0) {
+            firstOctet.setError("Input cannot be null");
+            return false;
+        }
+        if (secondOctet.length() == 0) {
+            secondOctet.setError("Input cannot be null");
+            return false;
+        }
+        if (thirdOctet.length() == 0) {
+            thirdOctet.setError("Input cannot be null");
+            return false;
+        }
+        if (forthOctet.length() == 0) {
+            forthOctet.setError("Input cannot be null");
+            return false;
+        }
+
+        /* Checking if octets are between 0-255 */
+        int firstOctetValue = Integer.parseInt(firstOctet.getText().toString());
+        int secondOctetValue = Integer.parseInt(secondOctet.getText().toString());
+        int thirdOctetValue = Integer.parseInt(thirdOctet.getText().toString());
+        int forthOctetValue = Integer.parseInt(forthOctet.getText().toString());
+
+        if (firstOctetValue < 0 || firstOctetValue > 255) {
+            firstOctet.setError("Not valid ip number");
+            return false;
+        }
+
+        if (secondOctetValue < 0 || secondOctetValue > 255) {
+            secondOctet.setError("Not valid ip number");
+            return false;
+        }
+        if (thirdOctetValue < 0 || thirdOctetValue > 255) {
+            thirdOctet.setError("Not valid ip number");
+            return false;
+        }
+        if (forthOctetValue < 0 || forthOctetValue > 255) {
+            forthOctet.setError("Not valid ip number");
+            return false;
+        }
+
+        return true;
+
+    }
+
+    private String prepareRequestData() {
         EditText firstOctet = (EditText) findViewById(R.id.IP_firstOctet);
         EditText secondOctet = (EditText) findViewById(R.id.IP_secondOctet);
         EditText thirdOctet = (EditText) findViewById(R.id.IP_thirdOctet);
@@ -34,9 +93,8 @@ public class MainActivity extends AppCompatActivity {
 
         return IPAddress;
     }
-
-    public void handleAPIRequest(View view) {
-        APIResponseHandler apiHandler = APIService.createService(APIResponseHandler.class, prepareAPIData());
+    public void handleAPIRequest() {
+        APIResponseHandler apiHandler = APIService.createService(APIResponseHandler.class, prepareRequestData());
 
         Call<APIResponseEntity> apiCall = apiHandler.getIPInfo();
 

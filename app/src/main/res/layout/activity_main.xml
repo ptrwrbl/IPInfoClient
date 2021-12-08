@@ -92,7 +92,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:onClick="handleAPIRequest"
+        android:onClick="sendButtonPressed"
         android:text="@string/send_request"
         app:layout_constraintEnd_toEndOf="@+id/IP_forthOctet"
         app:layout_constraintStart_toStartOf="@+id/IP_firstOctet"
