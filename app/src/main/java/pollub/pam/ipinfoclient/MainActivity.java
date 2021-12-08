@@ -53,17 +53,24 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void printAPIResults(APIResponseEntity info) {
-        TextView textView = (TextView) findViewById(R.id.API_requestResult);
+    private void printAPIResults(APIResponseEntity apiResponse) {
+        TextView resultField = (TextView) findViewById(R.id.API_requestResult);
 
-        String s;
+        String formattedResult;
 
-        if(info == null) s = "Request failed";
+        if(apiResponse == null) formattedResult = "Request failed";
         else {
-            s = "ip: " + info.getIp() + "\n" +
-                    "hostname: " + info.getHostname() + "\n" +
-                    "city: " + info.getCity();
+            formattedResult = "ip: "          + apiResponse.getIp()          + ",\n" +
+                "hostname: "    + apiResponse.getHostname()    + ",\n" +
+                "city: "        + apiResponse.getCity()        + ",\n" +
+                "region: "      + apiResponse.getRegion()      + ",\n" +
+                "country: "     + apiResponse.getCountry()     + ",\n" +
+                "loc: "         + apiResponse.getLoc()         + ",\n" +
+                "org: "         + apiResponse.getOrg()         + ",\n" +
+                "postal: "      + apiResponse.getPostal()      + ",\n" +
+                "timezone: "    + apiResponse.getTimezone()    + ",\n" +
+                "readme: "      + apiResponse.getReadme();
         }
-        textView.setText(s);
+        resultField.setText(formattedResult);
     }
 }
