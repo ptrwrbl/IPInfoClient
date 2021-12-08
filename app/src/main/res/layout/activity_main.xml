@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <EditText
+        android:id="@+id/IP_firstOctet"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="numberSigned|number"
+        android:numeric="integer"
+        app:layout_constraintEnd_toStartOf="@+id/IP_firstDot"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/IP_firstDot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/dot"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toStartOf="@+id/IP_secondOctet"
+        app:layout_constraintStart_toEndOf="@+id/IP_firstOctet"
+        app:layout_constraintTop_toTopOf="@+id/IP_firstOctet" />
+
+    <EditText
+        android:id="@+id/IP_secondOctet"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="numberSigned|number"
+        android:numeric="integer"
+        app:layout_constraintEnd_toStartOf="@+id/IP_secondDot"
+        app:layout_constraintStart_toEndOf="@+id/IP_firstDot"
+        app:layout_constraintTop_toTopOf="@+id/IP_firstOctet" />
+
+    <TextView
+        android:id="@+id/IP_secondDot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/dot"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toStartOf="@+id/IP_thirdOctet"
+        app:layout_constraintStart_toEndOf="@+id/IP_secondOctet"
+        app:layout_constraintTop_toTopOf="@+id/IP_firstOctet" />
+
+    <EditText
+        android:id="@+id/IP_thirdOctet"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="numberSigned|number"
+        android:numeric="integer"
+        app:layout_constraintEnd_toStartOf="@+id/IP_thirdDot"
+        app:layout_constraintStart_toEndOf="@+id/IP_secondDot"
+        app:layout_constraintTop_toTopOf="@+id/IP_firstOctet" />
+
+    <TextView
+        android:id="@+id/IP_thirdDot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/dot"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toStartOf="@+id/IP_forthOctet"
+        app:layout_constraintStart_toEndOf="@+id/IP_thirdOctet"
+        app:layout_constraintTop_toTopOf="@+id/IP_firstOctet" />
+
+    <EditText
+        android:id="@+id/IP_forthOctet"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="numberSigned|number"
+        android:numeric="integer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/IP_thirdDot"
+        app:layout_constraintTop_toTopOf="@+id/IP_firstOctet" />
+
+    <Button
+        android:id="@+id/action_sendRequest"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:onClick="handleAPIRequest"
+        android:text="@string/send_request"
+        app:layout_constraintEnd_toEndOf="@+id/IP_forthOctet"
+        app:layout_constraintStart_toStartOf="@+id/IP_firstOctet"
+        app:layout_constraintTop_toBottomOf="@+id/IP_firstOctet" />
+
+    <TextView
+        android:id="@+id/API_requestResult"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/action_sendRequest"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/action_sendRequest"
+        app:layout_constraintTop_toBottomOf="@+id/action_sendRequest"
+        app:layout_constraintVertical_bias="0.0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
